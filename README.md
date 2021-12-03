@@ -1,24 +1,32 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple API that checks if a password is strong.
 
-Things you may want to cover:
+The password is considered strong if:
+* it has at least 9 characters
+* it has at least one lower case letter
+* it has at least one upper case letter
+* it has at least one number
+* it has at least one of these special characters: *!@#$%^&\*()-+*
 
-* Ruby version
+## To Execute
 
-* System dependencies
+You'll need to have docker and docker-compose installed to use this api.
 
-* Configuration
+### Steps to run
+1. clone this repository
+2. run `docker-compose build`
+3. run `docker-compose up`
 
-* Database creation
+Then all you'll need to make a post request to `localhost:3000/api/v1/password_checker` 
+```
+h- Content-Type: application/json
+b- {
+    "password": "t@a13A566536d"
+   }
+```
+you can use Postman to do it.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Running Tests
+if you want to run the automated tests, you'll just need to change the line `dockerfile: Dockerfile` to `dockerfile: Dockerfile.development` and rebuild the image, but this time, after runing `docker-compose up` use another window to run `docker-compose run web bash`, after that just execute in the prompt the following command:
+`bundle exec rspec`
