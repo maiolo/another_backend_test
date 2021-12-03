@@ -6,7 +6,7 @@ class Api::V1::BaseController < ActionController::API
 
   def check_password
     @password = params[:password]
-    if @password.match?(/^(?!.*(\w)\1{1,})(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-+])[A-Za-z\d@$!%*?&]{3,}.+$/)
+    if @password.match?(/^(?!.*(\w)\1{1,})(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-+])[A-Za-z\d@$!%*?&]{9,}.+$/)
       success
     else
       error
